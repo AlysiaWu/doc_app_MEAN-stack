@@ -1,0 +1,19 @@
+<div ng-controller = "appointmentcontroller">
+<h2>New Appointment</h2>
+<form name = "register_form">
+Date: <input type = "date" ng-model = "new_appointment.date" name= "date" ng-date="new Date()" required>
+Time: <input type = "time" ng-model = "new_appointment.time"><br>
+Complain: <input type = "text" ng-model = "new_appointment.complain" name= "complain" ng-minlength="10"><br>
+
+<span style="color:red" ng-show="register_form.complain.$error.minlength">At least 10 characters</span>
+<span style="color:red" ng-show="register_form.date.$pristine">Future date needed</span>
+<!-- <span style="color:red" ng-show="register_form.date.$error.date">Future date needed</span> -->
+
+<button> <a href="/">Cancel</a></button>
+<button ng-click = "addAppointment()">Add Appointment</button>
+
+</form>
+<p class = "err">{{err.err}}</p>
+<p class = "err">{{timeerr.timeerr}}</p>
+<p class = "err">{{numerr.numerr}}</p>
+</div>

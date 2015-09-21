@@ -1,0 +1,29 @@
+<div ng-controller = "appointmentcontroller">
+<h2>Doctor's Appointments</h2>
+<a href="/">Logout</a><hr>
+Search <input type = 'text' ng-model = "filter_name">
+<table>
+	<thead>
+		<tr>
+			<td>Date</td>
+			<td>Time</td>
+			<td>patient Name</td>
+			<td>Complain</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "appointment in appointments | filter: filter_name | orderBy:'date'">
+			<td>{{appointment.date | date: 'MMMM dd yyyy'}}</td>
+			<td>{{appointment.time | date: "hh:mm a"}}</td>
+			<td>{{appointment.patient}}</td>
+			<td>{{appointment.complain}}</td>
+			<td ng-show ="appointment.patient == logged_user"><button ng-click = "cancelAppointment(appointment)">cancel</button></td>
+		</tr>
+	</tbody>
+</table>
+<button><a href="#/new_appointment">Add New Appointment</a></button>
+
+
+
+
+</div>
